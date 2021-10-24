@@ -6,6 +6,8 @@ public class PathFollower : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _arrivalThreshold;
+    public bool AOEDamage;
+    public int AOEDamageAmount;
     private Path _path;
     private Waypoint _currentWaypoint;
 
@@ -20,12 +22,13 @@ public class PathFollower : MonoBehaviour
     }
     public void PathComplete()
     {
-        //FindObjectOfType<PlayerHealthComponent>().TakeDamage(1);
+        FindObjectOfType<HealthComponent>().TakeDamage(1);
         Destroy(gameObject);
     }
     private void Update()
     {
-        float dist = Vector3.Distance(transform.position, _currentWaypoint.transform.position);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+        float dist = Vector3.Distance(transform.position, new Vector3(_currentWaypoint.GetPosition().x, 0, _currentWaypoint.GetPosition().z));
         if (dist <= _arrivalThreshold)
         {
             if (_currentWaypoint == _path.GetPathEnd())
@@ -35,7 +38,29 @@ public class PathFollower : MonoBehaviour
             _currentWaypoint = _path.GetNextWaypoint(_currentWaypoint);
         }
 
-        transform.LookAt(_currentWaypoint.GetPosition());
+        transform.LookAt(new Vector3(_currentWaypoint.GetPosition().x,0,_currentWaypoint.GetPosition().z));
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("AOE"))
+        {
+            print("egg");
+            AOEDamage = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("AOE"))
+        {
+            AOEDamage = false;
+        }
+    }
+    public void TakeDamage()
+    {
+        if (AOEDamage)
+        {
+            transform.GetChild(0).GetComponent<HealthComponent>().TakeDamage(AOEDamageAmount);
+        }
     }
 }

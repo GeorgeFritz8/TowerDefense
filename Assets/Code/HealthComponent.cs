@@ -4,36 +4,34 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private float _currentHealth;
-    private float _startHealth;
-
-    private void Start()
+    private bool blink;
+    private Renderer rendererMat;
+    [SerializeField] private Material startMaterial;
+    [SerializeField] private Material white;
+    [SerializeField] private int Health_;
+    private void Awake()
     {
-        _currentHealth = _startHealth;  
+        rendererMat = GetComponent<Renderer>();
+        startMaterial = rendererMat.material;
     }
+    public void TakeDamage(int amount)
+    {
 
+        StartCoroutine(Blink());
+        Health_ -= amount;
+    }
+    private IEnumerator Blink()
+    {
+        rendererMat.material = white;
+        yield return new WaitForSeconds(.1f);
+        rendererMat.material = startMaterial;
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Health_ <= 0)
         {
-            TakeDamage(5);
+            //FindObjectOfType<Wallet>().AddMoney(Random.Range(1, 6));
+            Destroy(gameObject);
         }
-    }
-
-    public void TakeDamage(float amount)
-    {
-        print("ik krijg damage");
-        _currentHealth -= amount;
-
-        if (_currentHealth <= 0)
-        {
-            Death();    
-        }
-
-    }
-
-    private void Death()
-    {
-        print("ik ben dood");
     }
 }
