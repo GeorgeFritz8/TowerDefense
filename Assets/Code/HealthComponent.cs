@@ -23,7 +23,9 @@ public class HealthComponent : MonoBehaviour
     private IEnumerator Blink()
     {
         rendererMat.material = white;
+
         yield return new WaitForSeconds(.1f);
+
         rendererMat.material = startMaterial;
     }
     private void Update()
