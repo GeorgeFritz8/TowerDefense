@@ -32,8 +32,8 @@ public class HealthComponent : MonoBehaviour
     {
         if (Health_ <= 0)
         {
-            //FindObjectOfType<Wallet>().AddMoney(Random.Range(1, 6));
-            Destroy(gameObject);
+            FindObjectOfType<Wallet>().AddMoney(1);
+            transform.parent.gameObject.GetComponent<DestroyEnemy>().Destroy();
         }
     }
 }
