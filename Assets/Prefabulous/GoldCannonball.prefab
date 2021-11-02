@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6929360549774767242}
   - component: {fileID: 2552195137803266203}
   m_Layer: 0
-  m_Name: BulletCannon
+  m_Name: GoldCannonball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dbd1ceeaf1334214fa69039aa4e71363, type: 2}
+  - {fileID: 2100000, guid: 0bd785f0ba7655f4f9c16ab198a03759, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

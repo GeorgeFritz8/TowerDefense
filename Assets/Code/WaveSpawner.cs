@@ -5,6 +5,8 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    [HideInInspector] public bool canSpawn;
     public GameObject Enemy;
     public float SpawnTimer;
     public Vector3 SpawnPosition;
@@ -15,6 +17,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
+        canSpawn = true;
         CurrentWave = -1;
     }
     private void Update()

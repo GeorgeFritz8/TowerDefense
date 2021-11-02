@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] public float _speed;
     [SerializeField] private float _arrivalThreshold;
+    private float startSpeed;
     public bool AOEDamage;
     public int AOEDamageAmount;
     private Path _path;
@@ -13,6 +14,7 @@ public class PathFollower : MonoBehaviour
 
     private void Awake()
     {
+        startSpeed = _speed;
         SetupPath();
     }
     private void SetupPath()
@@ -62,5 +64,16 @@ public class PathFollower : MonoBehaviour
         {
             transform.GetChild(0).GetComponent<HealthComponent>().TakeDamage(AOEDamageAmount);
         }
+    }
+    
+    public void SlowTimer(float slowSpeed)
+    {
+        _speed = slowSpeed;
+        Invoke("NormalSpeed", 1);
+    }
+
+    public void NormalSpeed()
+    {
+        _speed = startSpeed;
     }
 }
