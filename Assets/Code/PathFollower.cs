@@ -47,7 +47,6 @@ public class PathFollower : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AOE"))
         {
-            print("egg");
             AOEDamage = true;
         }
     }
