@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36f4394e450ca7449f17abd9b89f5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageAmount: 2
-  DieTimer: 0.3
+  DamageAmount: 4
+  DieTimer: 0.6
 --- !u!54 &6929360549774767242
 Rigidbody:
   m_ObjectHideFlags: 0

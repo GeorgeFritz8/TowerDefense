@@ -32,7 +32,7 @@ public class HealthComponent : MonoBehaviour
     {
         if (Health_ <= 0)
         {
-            FindObjectOfType<Wallet>().AddMoney(1);
+            FindObjectOfType<Wallet>().AddMoney(100);
             transform.parent.gameObject.GetComponent<DestroyEnemy>().Destroy();
         }
     }

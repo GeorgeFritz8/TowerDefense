@@ -24,7 +24,7 @@ public class PathFollower : MonoBehaviour
     }
     public void PathComplete()
     {
-        FindObjectOfType<HealthComponent>().TakeDamage(1);
+        FindObjectOfType<PlayerHealth>().RemoveHealth(5);
         Destroy(gameObject);
     }
     private void Update()

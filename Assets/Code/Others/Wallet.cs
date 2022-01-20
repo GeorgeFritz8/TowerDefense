@@ -13,6 +13,7 @@ public class Wallet : MonoBehaviour
     private void Awake()
     {
         ResetMoney(true);
+        AddMoney(300);
     }
 
     public void RemoveMoney(float amount)

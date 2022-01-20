@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             Debug.LogWarning("Player died!");
             FindObjectOfType<WaveSpawner>().canSpawn = false;
-            SceneManager.LoadScene("Mainmenu");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

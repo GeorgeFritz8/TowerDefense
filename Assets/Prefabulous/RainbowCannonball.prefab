@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageAmount: 2
-  DieTimer: 0.3
+  DieTimer: 0.6
 --- !u!54 &6929360549774767242
 Rigidbody:
   m_ObjectHideFlags: 0
